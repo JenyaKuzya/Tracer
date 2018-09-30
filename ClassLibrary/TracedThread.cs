@@ -8,5 +8,18 @@ namespace TracerLib
 {
     public class TracedThread
     {
+        private List<TracedMethod> tracedMethods;
+
+        public int ExecutionTime { get; }
+
+        public TracedThread()
+        {
+            tracedMethods = new List<TracedMethod>();
+        }
+
+        public void AddMethod(TracedMethod method)
+        {
+            tracedMethods.Add(method);
+        }
     }
 }

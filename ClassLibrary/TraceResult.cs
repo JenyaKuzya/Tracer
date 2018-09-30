@@ -17,9 +17,9 @@ namespace TracerLib
             tracedThreads = new ConcurrentDictionary<int, TracedThread>();
         }
 
-        public void AddThread(TracedThread addedThread)
+        public TracedThread AddThread(int id, TracedThread addedThread)
         {
-            tracedThreads.TryAdd(Thread.CurrentThread.ManagedThreadId, new TracedThread());
+            tracedThreads.GetOrAdd(id, addedThread);
         }
     }
 }
