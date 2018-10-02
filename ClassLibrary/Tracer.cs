@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace TracerLib
 {
-    class Tracer : ITracer
+    public class Tracer : ITracer
     {
         private TraceResult traceResult;
 
@@ -34,14 +34,15 @@ namespace TracerLib
             TracedThread tracedThread;
             int threadId = Thread.CurrentThread.ManagedThreadId;
 
-            tracedThread = traceResult.GetThread(threadId);       
+            tracedThread = traceResult.GetThread(threadId);
 
-            tracedThread.StopTrace();
+            TracedMethod tracedMethod = tracedThread.GetMethod();
+            tracedMethod.StopTrace();
         }
 
         public TraceResult GetTraceResult()
         {
-
+            return traceResult;
         }
     }
 }

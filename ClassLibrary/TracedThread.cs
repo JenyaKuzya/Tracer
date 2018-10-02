@@ -34,5 +34,10 @@ namespace TracerLib
 
             stack.Push(method);
         }
+
+        public TracedMethod GetMethod()
+        {
+            return stack.Pop();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace TracerProject
 {
     class Program
     {
-        ITracer tracer = new Tracer();
+        private static ITracer tracer = new Tracer();
         static void Main(string[] args)
         {
             tracer.StartTrace();
