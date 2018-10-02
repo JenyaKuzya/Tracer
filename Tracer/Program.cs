@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading;
 using TracerLib;
 
-namespace Tracer
+namespace TracerProject
 {
     class Program
     {
-        Tracer tracer = new Tracer();
+        ITracer tracer = new Tracer();
         static void Main(string[] args)
         {
             tracer.StartTrace();

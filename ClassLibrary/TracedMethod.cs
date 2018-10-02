@@ -11,7 +11,7 @@ namespace TracerLib
     public class TracedMethod
     {
         private Stopwatch stopwatch;
-        private List<TracedMethod> tracedMethods;
+        private List<TracedMethod> nestedMethods;
 
         public string Name { get; }
         public string ClassName { get; }
@@ -21,7 +21,7 @@ namespace TracerLib
         {
             Name = method.Name;
             ClassName = method.DeclaringType.Name;
-            tracedMethods = new List<TracedMethod>();
+            nestedMethods = new List<TracedMethod>();
             stopwatch = new Stopwatch();
         }
 
@@ -33,6 +33,11 @@ namespace TracerLib
         public void StopTrace()
         {
             stopwatch.Stop();
+        }
+
+        public void AddNestedMethod(TracedMethod tracedMethod)
+        {
+            nestedMethods.Add(tracedMethod);
         }
     }
 }

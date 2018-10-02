@@ -19,7 +19,12 @@ namespace TracerLib
 
         public TracedThread AddThread(int id, TracedThread addedThread)
         {
-            tracedThreads.GetOrAdd(id, addedThread);
+            return tracedThreads.GetOrAdd(id, addedThread);
+        }
+
+        public TracedThread GetThread(int id)
+        {
+            return tracedThreads[id];
         }
     }
 }

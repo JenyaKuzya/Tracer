@@ -31,7 +31,12 @@ namespace TracerLib
 
         public void StopTrace()
         {
+            TracedThread tracedThread;
+            int threadId = Thread.CurrentThread.ManagedThreadId;
 
+            tracedThread = traceResult.GetThread(threadId);       
+
+            tracedThread.StopTrace();
         }
 
         public TraceResult GetTraceResult()
