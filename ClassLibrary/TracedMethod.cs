@@ -40,5 +40,7 @@ namespace TracerLib
         {
             nestedMethods.Add(tracedMethod);
         }
+
+        internal IEnumerable<TracedMethod> NestedMethods => nestedMethods;
     }
 }

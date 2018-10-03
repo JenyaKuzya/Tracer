@@ -26,5 +26,7 @@ namespace TracerLib
         {
             return tracedThreads[id];
         }
+
+        internal IEnumerable<KeyValuePair<int, TracedThread>> TracedThreads => tracedThreads;
     }
 }

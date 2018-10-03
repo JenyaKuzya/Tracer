@@ -42,5 +42,7 @@ namespace TracerLib
         {
             return tracedMethods.Select(tracedMethod => tracedMethod.ExecutionTime).Sum();
         }
+
+        internal IEnumerable<TracedMethod> TracedMethods => tracedMethods;
     }
 }

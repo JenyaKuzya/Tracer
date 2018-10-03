@@ -28,7 +28,7 @@ namespace TracerProject
 
             tracer.StopTrace();
 
-            PrintTraceResult();
+            PrintTraceResult(tracer.GetTraceResult());
         }
 
         static void doSmth()
@@ -41,12 +41,12 @@ namespace TracerProject
             tracer.StopTrace();
         }
 
-        private static void PrintTraceResult()
+        private static void PrintTraceResult(TraceResult traceResult)
         {
             var stream = new MemoryStream();
             ITraceResultSerializer traceResultSerializer;
             traceResultSerializer = new XMLTraceResultSerializer();
-            traceResultSerializer.Serialize(stream, tracer.GetTraceResult());
+            traceResultSerializer.Serialize(stream, traceResult);
             var traceResultWriter = new ConsoleTraceResultWriter();
 
             try

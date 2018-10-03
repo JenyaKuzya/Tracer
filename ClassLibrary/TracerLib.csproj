@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Itracer.cs" />
+    <Compile Include="ITraceResultSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TracedMethod.cs" />
     <Compile Include="TracedThread.cs" />
     <Compile Include="Tracer.cs" />
     <Compile Include="TraceResult.cs" />
+    <Compile Include="XMLTraceResultSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
