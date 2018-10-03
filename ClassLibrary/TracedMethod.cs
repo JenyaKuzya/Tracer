@@ -15,7 +15,7 @@ namespace TracerLib
 
         public string Name { get; }
         public string ClassName { get; }
-        public int ExecutionTime { get; }
+        public long ExecutionTime { get; set; }
 
         public TracedMethod(MethodBase method)
         {
@@ -33,6 +33,7 @@ namespace TracerLib
         public void StopTrace()
         {
             stopwatch.Stop();
+            ExecutionTime = stopwatch.ElapsedMilliseconds;
         }
 
         public void AddNestedMethod(TracedMethod tracedMethod)

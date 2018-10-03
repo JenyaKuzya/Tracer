@@ -11,8 +11,6 @@ namespace TracerLib
         private List<TracedMethod> tracedMethods;
         private Stack<TracedMethod> stack;
 
-        public int ExecutionTime { get; }
-
         public TracedThread()
         {
             tracedMethods = new List<TracedMethod>();
@@ -38,6 +36,11 @@ namespace TracerLib
         public TracedMethod GetMethod()
         {
             return stack.Pop();
+        }
+
+        public long GetExecutionTime()
+        {
+            return tracedMethods.Select(tracedMethod => tracedMethod.ExecutionTime).Sum();
         }
     }
 }
