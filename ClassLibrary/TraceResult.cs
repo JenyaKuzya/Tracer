@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Threading;
 
 namespace TracerLib
 {
+    [DataContract(Name = "result")]
     public class TraceResult
     {
         private ConcurrentDictionary<int, TracedThread> tracedThreads;
@@ -17,9 +19,17 @@ namespace TracerLib
             tracedThreads = new ConcurrentDictionary<int, TracedThread>();
         }
 
-        public TracedThread AddThread(int id, TracedThread addedThread)
+        [DataMember(Name = "threads")]
+        public List<TracedThread> TracedThreads
         {
-            return tracedThreads.GetOrAdd(id, addedThread);
+            get { return new List<TracedThread>(new SortedDictionary<int, TracedThread>(tracedThreads).Values); }
+            private set { } 
+        }
+
+        public TracedThread AddThread(int id)
+        {
+            TracedThread tracedThread = new TracedThread(id);
+            return tracedThreads.GetOrAdd(id, tracedThread);
         }
 
         public TracedThread GetThread(int id)
@@ -27,6 +37,9 @@ namespace TracerLib
             return tracedThreads[id];
         }
 
-        internal IEnumerable<KeyValuePair<int, TracedThread>> TracedThreads => tracedThreads;
+        public int GetCountOfThreads()
+        {
+            return tracedThreads.Count();
+        }
     }
 }

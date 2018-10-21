@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using TracerLib;
 using System.IO;
 
@@ -31,6 +32,16 @@ namespace TracerProject
             PrintTraceResult(tracer.GetTraceResult());
         }
 
+        private static void PrintTraceResult(TraceResult traceResult)
+        {
+            ITraceResultSerializer serializer = new XMLTraceResultSerializer();
+            ITraceResultWriter resultWriter = new ConsoleTraceResultWriter();
+            resultWriter.WriteResult(traceResult, serializer);
+            Console.ReadKey();
+            resultWriter = new FileTraceResultWriter("traceResult.txt");
+            resultWriter.WriteResult(traceResult, serializer);
+        }
+
         static void doSmth()
         {
             tracer.StartTrace();
@@ -40,40 +51,15 @@ namespace TracerProject
 
             tracer.StopTrace();
         }
-
-        private static void PrintTraceResult(TraceResult traceResult)
-        {
-            var stream = new MemoryStream();
-            ITraceResultSerializer traceResultSerializer;
-            traceResultSerializer = new XMLTraceResultSerializer();
-            traceResultSerializer.Serialize(stream, traceResult);
-            var traceResultWriter = new ConsoleTraceResultWriter();
-
-            try
-            {
-                traceResultWriter.Write(stream);
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Data);
-            }
-            finally
-            {
-                stream.Close();
-                Console.ReadLine();
-            }
-        }
     }
 
     public class Foo
     {
-        private Bar _bar;
         private ITracer _tracer;
 
         internal Foo(ITracer tracer)
         {
             _tracer = tracer;
-            _bar = new Bar(_tracer);
         }
 
         public void MyMethod()
@@ -81,40 +67,8 @@ namespace TracerProject
             _tracer.StartTrace();
 
             Thread.Sleep(300);
-            Recursion(3);
 
             _tracer.StopTrace();
-        }
-
-        public void Recursion(int num)
-        {
-            _tracer.StartTrace();
-
-            if (num > 0)
-            {
-                Thread.Sleep(100);
-                _bar.InnerMethod();
-                Recursion(num - 1);
-            }
-
-            _tracer.StopTrace();
-        }
-    }
-
-    public class Bar
-    {
-        private ITracer _tracer;
-
-        internal Bar(ITracer tracer)
-        {
-            _tracer = tracer;
-        }
-
-        public void InnerMethod()
-        {
-            _tracer.StartTrace();
-            Thread.Sleep(50);
-            _tracer.StopTrace();
-        }
+        }  
     }
 }

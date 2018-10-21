@@ -20,11 +20,11 @@ namespace TracerLib
 
         public void StartTrace()
         {
-            StackTrace stackTrace = new StackTrace(2);
+            StackTrace stackTrace = new StackTrace(1);
             StackFrame stackFrame = stackTrace.GetFrame(0);
             TracedMethod tracedMethod = new TracedMethod(stackFrame.GetMethod());
 
-            TracedThread tracedThread = traceResult.AddThread(Thread.CurrentThread.ManagedThreadId, new TracedThread());
+            TracedThread tracedThread = traceResult.AddThread(Thread.CurrentThread.ManagedThreadId);
             tracedThread.AddMethod(tracedMethod);
             tracedMethod.StartTrace();
         }

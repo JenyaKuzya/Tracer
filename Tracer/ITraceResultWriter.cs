@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace TracerLib
 {
-    public interface ITraceResultSerializer
+    public interface ITraceResultWriter
     {
-        void Serialize(Stream outStream, TraceResult traceResult);
+        void WriteResult(TraceResult traceResult, ITraceResultSerializer serializer);
     }
 }

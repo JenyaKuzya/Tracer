@@ -3,46 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace TracerLib
 {
+    [DataContract(Name = "thread")]
     public class TracedThread
     {
         private List<TracedMethod> tracedMethods;
-        private Stack<TracedMethod> stack;
+        private Stack<TracedMethod> stackOfMethods;
 
-        public TracedThread()
+        [DataMember(Name = "id", Order = 0)]
+        [XmlElement(ElementName = "id")]
+        public int ThreadID { get; set; }
+
+        [DataMember(Name = "time", Order = 1)]
+        [XmlElement(ElementName = "time")]
+        public string TimeWithPostfix
+        {
+            get { return GetExecutionTime().ToString() + "ms"; }
+            set { } // to allow serialization
+        }
+
+        [DataMember(Name = "methods", Order = 2)]
+        [XmlElement(ElementName = "methods")]
+        public List<TracedMethod> InnerMethods
+        {
+            get { return new List<TracedMethod>(tracedMethods); }
+            set { }
+        }
+
+        public TracedThread(int id)
         {
             tracedMethods = new List<TracedMethod>();
-            stack = new Stack<TracedMethod>();
+            stackOfMethods = new Stack<TracedMethod>();
+            ThreadID = id;
         }
+
+        public TracedThread()
+        {    }
 
         public void AddMethod(TracedMethod method)
         {
             tracedMethods.Add(method);
 
-            if (stack.Count == 0)
+            if (stackOfMethods.Count == 0)
             {
                 tracedMethods.Add(method);
             }
             else
             {
-                stack.Peek().AddNestedMethod(method);
+                stackOfMethods.Peek().AddNestedMethod(method);
             }
 
-            stack.Push(method);
+            stackOfMethods.Push(method);
         }
 
         public TracedMethod GetMethod()
         {
-            return stack.Pop();
+            return stackOfMethods.Pop();
         }
 
         public long GetExecutionTime()
         {
             return tracedMethods.Select(tracedMethod => tracedMethod.ExecutionTime).Sum();
         }
-
-        internal IEnumerable<TracedMethod> TracedMethods => tracedMethods;
     }
 }

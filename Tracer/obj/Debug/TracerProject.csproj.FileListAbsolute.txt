@@ -1,1 +1,8 @@
 C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\bin\Debug\TracerProject.exe.config
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\bin\Debug\TracerProject.exe
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\bin\Debug\TracerProject.pdb
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\bin\Debug\TracerLib.dll
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\bin\Debug\TracerLib.pdb
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\obj\Debug\TracerProject.csprojResolveAssemblyReference.cache
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\obj\Debug\TracerProject.exe
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\Tracer\obj\Debug\TracerProject.pdb
