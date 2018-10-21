@@ -16,10 +16,10 @@ namespace TracerProject
         {
             tracer.StartTrace();
 
-            var threads = new List<Thread>();
+            List<Thread> threads = new List<Thread>();
             for (int i = 0; i < 4; ++i)
             {
-                var thread = new Thread(doSmth);
+                Thread thread = new Thread(doSmth);
                 threads.Add(thread);
                 thread.Start();
             }

@@ -23,14 +23,14 @@ namespace TracerLib
         public string TimeWithPostfix
         {
             get { return GetExecutionTime().ToString() + "ms"; }
-            set { } // to allow serialization
+            set { }
         }
 
         [DataMember(Name = "methods", Order = 2)]
         [XmlElement(ElementName = "methods")]
         public List<TracedMethod> InnerMethods
         {
-            get { return new List<TracedMethod>(tracedMethods); }
+            get { return tracedMethods; }
             set { }
         }
 

@@ -1,0 +1,8 @@
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\bin\Debug\TracerUnitTest.dll
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\bin\Debug\TracerUnitTest.pdb
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\bin\Debug\TracerLib.dll
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\bin\Debug\TracerLib.pdb
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\obj\Debug\TracerUnitTest.csprojResolveAssemblyReference.cache
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\obj\Debug\TracerUnitTest.dll
+C:\Users\XTreme.ws\Documents\Учёба\СПП\Tracer\TracerUnitTest\obj\Debug\TracerUnitTest.pdb

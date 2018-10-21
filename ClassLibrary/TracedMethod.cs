@@ -39,7 +39,7 @@ namespace TracerLib
         [XmlElement(ElementName = "methods")]
         public List<TracedMethod> InnerMethods
         {
-            get { return new List<TracedMethod>(nestedMethods); }
+            get { return nestedMethods; }
             set { }
         }
 
