@@ -15,10 +15,7 @@ namespace TracerLib
 
         public void Serialize(Stream outStream, TraceResult traceResult)
         {
-            using (Stream stream = outStream)
-            {
-                xmlSerializer.Serialize(stream, traceResult);
-            }
+            xmlSerializer.Serialize(outStream, traceResult);         
         }
 
         public XMLTraceResultSerializer()

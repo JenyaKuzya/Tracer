@@ -79,5 +79,33 @@ namespace TracerUnitTest
             int actualCountOfMethods = tracer.GetTraceResult().GetThread(Thread.CurrentThread.ManagedThreadId).InnerMethods[0].InnerMethods.Count;
             Assert.AreEqual(actualCountOfMethods, 4);
         }
+
+        [TestMethod]
+        public void CodeTest()
+        {
+            tracer.StartTrace();
+
+            AnyMethod();
+
+            tracer.StopTrace();
+
+            Assert.IsTrue(ThereNoEqual(tracer.GetTraceResult().GetThread(Thread.CurrentThread.ManagedThreadId).InnerMethods));
+        }
+
+        private bool ThereNoEqual(List<TracedMethod> Methods)
+        {
+            for (int i = 0; i < Methods.Count - 1; i++)
+            {
+                for (int j = i; j < Methods.Count; j++)
+                {
+                    if (Methods[i] == Methods[j])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }

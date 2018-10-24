@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 namespace TracerLib
 {
     [DataContract(Name = "thread")]
+    [XmlType(TypeName = "thread")]
     public class TracedThread
     {
         private List<TracedMethod> tracedMethods;
@@ -46,7 +47,7 @@ namespace TracerLib
 
         public void AddMethod(TracedMethod method)
         {
-            tracedMethods.Add(method);
+            //tracedMethods.Add(method);
 
             if (stackOfMethods.Count == 0)
             {

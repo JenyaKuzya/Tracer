@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace TracerLib
 {
@@ -20,6 +21,7 @@ namespace TracerLib
         }
 
         [DataMember(Name = "threads")]
+        [XmlElement(ElementName = "threads")]
         public List<TracedThread> TracedThreads
         {
             get { return new List<TracedThread>(new SortedDictionary<int, TracedThread>(tracedThreads).Values); }

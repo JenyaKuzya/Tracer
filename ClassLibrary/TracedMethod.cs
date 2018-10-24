@@ -11,6 +11,7 @@ using System.Xml.Serialization;
 namespace TracerLib
 {
     [DataContract(Name = "method")]
+    [XmlType(TypeName = "method")]
     public class TracedMethod
     {
         private Stopwatch stopwatch;
